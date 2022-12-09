@@ -45,7 +45,7 @@ export const ProductDetail = () =>{
                             <p className='review'>(100 customer reviews)</p>
                         </div>
 
-                        <h5>$30.99</h5>
+                        <h5>$30.99.</h5>
 
                     </section>
                </div>
