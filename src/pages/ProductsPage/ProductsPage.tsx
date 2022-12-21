@@ -1,8 +1,5 @@
-import './ProductsPage.scss'
+import './ProductsPage.scss';
 
-
-export const ProductsPage = () =>{
-  return(
-    <h1>ProductsPage</h1>
-  )
-}
+export const ProductsPage = () => {
+  return <h1>ProductsPage</h1>;
+};
