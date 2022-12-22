@@ -40,6 +40,7 @@ export const RegisterPage = () => {
     });
 
     const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
+        console.log("hi")
         fetch(`${baseUrl}/users`, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -78,7 +79,7 @@ export const RegisterPage = () => {
                                     onClick={() => setVisible(!visible)}></i>
                             </label>
                             <p className="validation-error">{errors.repeatPassword?.message}</p>
-                            <button >Creat</button>
+                            <button type="submit">Creat</button>
                         </form>
                         <div className="account">If you have accout already :<Link to="/login">Click here </Link></div>
                     </div>

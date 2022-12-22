@@ -1,6 +1,6 @@
 import './LoginPage.scss'
 import picture from '../../assets/images/hero-bcg.a876f19f6786a3aca992.jpeg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useNavigation } from 'react-router-dom';
 import { FC, SetStateAction, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { User } from '../../models/user';
@@ -13,6 +13,7 @@ import { setValueInLocalStorage } from '../../services/localStorage.service';
 export const LoginPage = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const dispatch = useDispatch();
+   const navigate =useNavigate();
   const imitateLogin = () => {
     fetch(`${baseUrl}/auth/login`, {
       method: 'POST',
@@ -32,6 +33,7 @@ export const LoginPage = () => {
           name: data.name,
         };
         dispatch(logIn({ user: user }));
+        navigate("/");
       });
   };
   return (
@@ -51,7 +53,7 @@ export const LoginPage = () => {
                 <input type={visible ? "text" : "password"} placeholder="Password" /><i className={visible ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"}
                   onClick={() => setVisible(!visible)}></i>
               </label>
-              <button onClick={imitateLogin}>Login</button>
+              <button type="button" onClick={imitateLogin}>Login</button>
             </form>
             <div className="forgetpasword">If you forget password :<a href="">Click here</a></div>
             <div className="account">If you have not account :<Link to="/register">Click here </Link></div>

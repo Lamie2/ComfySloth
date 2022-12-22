@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/images/logo.svg';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 
 export const Header = () => {
+  const currentUser = useSelector((state: RootState) => state.currentUser).userInfo;
   return (
     <section id="header">
       <nav>
@@ -27,10 +30,12 @@ export const Header = () => {
                 <FontAwesomeIcon icon={faCartShopping} />{' '}
               </li>
               <li>
-                <Link to="/login">
-                Login
+                {currentUser ? currentUser.name  :
+                 <Link to="/login">
+                Login 
                 <FontAwesomeIcon icon={faUserPlus} />
-                </Link>
+                </Link>}
+               
               </li>
             </ul>
           </div>
