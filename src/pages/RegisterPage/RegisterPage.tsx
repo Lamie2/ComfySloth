@@ -40,18 +40,17 @@ export const RegisterPage = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
-    console.log('aaa');
-    fetch(`${baseUrl}/users`, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((userId) => alert(userId));
-  };
+    const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
+        fetch(`${baseUrl}/users`, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => response.json())
+            .then((userId) => alert(userId));
+    };
 
   return (
     <section id="register">
@@ -92,7 +91,7 @@ export const RegisterPage = () => {
                 </span>
               </label>
               <p className="validation-error">{errors.repeatPassword?.message}</p>
-              <button>Creat</button>
+              <button>Create</button>
             </form>
             <div className="account">
               If you have accout already :<Link to="/login">Click here </Link>

@@ -1,6 +1,6 @@
-import './LoginPage.scss';
-import picture from '../../assets/images/hero-bcg.a876f19f6786a3aca992.jpeg';
-import { Link } from 'react-router-dom';
+import './LoginPage.scss'
+import picture from '../../assets/images/hero-bcg.a876f19f6786a3aca992.jpeg'
+import { Link, useNavigate, useNavigation } from 'react-router-dom';
 import { FC, SetStateAction, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { User } from '../../models/user';
@@ -14,6 +14,7 @@ import { faCartShopping, faEye, faEyeSlash, faUserPlus } from '@fortawesome/free
 export const LoginPage = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const dispatch = useDispatch();
+   const navigate =useNavigate();
   const imitateLogin = () => {
     fetch(`${baseUrl}/auth/login`, {
       method: 'POST',
@@ -33,6 +34,7 @@ export const LoginPage = () => {
           name: data.name,
         };
         dispatch(logIn({ user: user }));
+        navigate("/");
       });
   };
   return (
@@ -56,7 +58,7 @@ export const LoginPage = () => {
                 </span>
                
               </label>
-              <button onClick={imitateLogin}>Login</button>
+              <button type="button" onClick={imitateLogin}>Login</button>
             </form>
             <div className="account">If you have not account :<Link to="/register">Click here </Link></div>
           </div>
