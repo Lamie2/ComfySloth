@@ -1,6 +1,8 @@
 import './Slider.scss';
 import picture1 from '../../../../assets/images/hero-bcg.a876f19f6786a3aca992.jpeg';
 import picture2 from '../../../../assets/images/slider2.jpeg';
+import { Link } from 'react-router-dom';
+
 
 
 export const Slider = () => {
@@ -12,7 +14,7 @@ export const Slider = () => {
                         <div className="left">
                             <h1>Design YourComfort Zone</h1>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at sed omnis corporis doloremque possimus velit! Repudiandae nisi odit, aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis alias?</p>
-                            <button>Shop Now</button>
+                            <button><Link to="products">Shop Now</Link></button>
                         </div>
                     </div>
                     <div className="col-6 col-md-12">

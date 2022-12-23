@@ -98,7 +98,7 @@ export const ProductsPage = () => {
                   <Dropdown options={items} label={'Sort By'} onChange={onChangeDrop} />
                 </form>
               </div>
-              <div className="list-view">{gridState ? <GridView /> : <ListView />}</div>
+              <div className="list-view">{gridState ? <ListView /> : < GridView />}</div>
             </section>
           </div>
         </div>
