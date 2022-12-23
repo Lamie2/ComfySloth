@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { MainContext } from '../../../../../store/contex';
 import './ListItem.scss';
+import { Link } from 'react-router-dom';
 
 interface IListItemProps {
   id: number;
@@ -14,7 +15,7 @@ export const ListItem = (props: IListItemProps) => {
   const { id, imgUrl, name, price, desc } = props;
   const {basket , setBasket}=  useContext(MainContext);
   return (
-    <div className="list-view" onClick={()=>{setBasket([...basket,{ id, imgUrl, name, price, desc}]);}}>
+    <div className="list-view" >
       <article>
         <img src={imgUrl} alt={name} />
         <div>
@@ -22,9 +23,9 @@ export const ListItem = (props: IListItemProps) => {
           <h5 className="price">${price}</h5>
           <p>{desc}</p>
           <button>
-            <a className="btn" href={`/products/${id}`}>
+            <Link className="btn" to={`/products/${id}`}>
               DETAILS
-            </a>
+            </Link>
           </button>
         </div>
       </article>

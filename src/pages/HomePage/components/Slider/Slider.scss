@@ -10,7 +10,11 @@
         margin: 20px 0;
         cursor: pointer;
         background-color: $secondary;
-        color: white;
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        
     }
     .left {
         text-align: start;

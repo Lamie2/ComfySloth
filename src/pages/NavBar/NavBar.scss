@@ -24,6 +24,7 @@
       list-style: none;
       color: grey;
       font-size: 18px;
+     
     }
   }
   .cart-login {
@@ -36,9 +37,11 @@
       list-style: none;
       justify-content: center;
       color: rgb(34, 34, 34);
-      font-size: 25px;
+      font-size: 22px;
       li {
         padding: 0 20px;
+        cursor: pointer;
+       
       }
     }
   }

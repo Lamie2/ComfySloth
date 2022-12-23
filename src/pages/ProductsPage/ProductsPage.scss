@@ -66,8 +66,10 @@
     }
   }
   .list-view {
-    display: grid;
-    row-gap: 3rem;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+  
     
   }
 }

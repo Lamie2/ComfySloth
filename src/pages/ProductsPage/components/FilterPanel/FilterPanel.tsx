@@ -4,6 +4,7 @@ import { baseUrl } from '../../../../constant';
 import { companyProducts, loadProducts, searchProducts } from '../../ProductPageSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const FilterPanel = (props: any) => {
   const dispatch = useDispatch();
@@ -78,19 +79,10 @@ export const FilterPanel = (props: any) => {
           <h5>Company</h5>
           <Dropdown options={items} onChange={onChangeDrop} />
         </div>
-        <div className="form-control colors">
-          <h5>Colors</h5>
-        </div>
-        <div className="form-control price">
-          <h5>Price</h5>
-        </div>
-        <div className="form-control check-box">
-          <label htmlFor="vehicle1">Free Shipping</label>
-          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-        </div>
         <div className="form-control btn">
           <button type="button" className="clear-btn">
-            Clear Filters
+            
+           <Link to="/product">Clear Filters</Link>
           </button>
         </div>
       </form>

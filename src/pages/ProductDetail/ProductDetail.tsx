@@ -2,30 +2,47 @@ import './ProductDetail.scss';
 import { BreadCrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { RatingStars } from '../../components/RatingStars/RatingStars';
 import { baseUrl } from '../../constant';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import image from '../../assets/images/j4ZpvP4wbSwE9my6w0I_dxqXCvAkG_J5vn80R-Q34wo (2).jpeg';
 import { ProductResponse } from '../../models/ProductResponse';
+import { Link } from 'react-router-dom';
+import { MainContext } from '../../store/contex';
+
+interface IListItemProp {
+  id: number;
+  imgUrl: string;
+  name: string;
+  price: number;
+  desc: string;
+}
+export const ProductDetail = (props: IListItemProp) => {
 
 
-export const ProductDetail = () => {
+
+
   const [count, setCount] = useState(0);
 
 
-  
+  //const { id, imgUrl, name, price, desc } = props;
+  const { basket, setBasket } = useContext(MainContext);
   const urlParams = useParams<{ productId: string }>();
   const productId = urlParams.productId;
   const [product, setProduct] = useState<ProductResponse | null>(null);
 
   console.log(product);
-
-  useEffect(() => {
+  const imgUrl = product?.imageUrl
+  const id = productId;
+  const name = product?.name;
+  const price = product?.price;
+  const desc = product?.description
+    useEffect(() => {
     fetch(`${baseUrl}/products/${productId}`)
       .then((response) => response.json())
       .then((data) => setProduct(data));
   }, [productId]);
 
-
+  
   function increment() {
     //setCount(prevCount => prevCount+=1);
     setCount(function (prevCount) {
@@ -62,10 +79,10 @@ export const ProductDetail = () => {
     <>
       <BreadCrumbs urls={breadUrls} />
       <section className="product-detail container">
-        <a href="/products" className="btn">
+        <Link to="/products" className="btn">
           {' '}
           BACK TO PRODUCTS
-        </a>
+        </Link>
 
         <div className="product">
           <section className="image">
@@ -113,7 +130,7 @@ export const ProductDetail = () => {
             <hr />
 
             <section className="AddToCart">
-              
+
 
               <div className="btn-container">
                 <div className="amount-btns">
@@ -148,9 +165,9 @@ export const ProductDetail = () => {
                   </button>
                 </div>
 
-                <a href="/cart" className="btn">
+                <button className="btn" onClick={() => { setBasket([...basket, { id, imgUrl, name, price, desc}]); }}>
                   ADD TO CART
-                </a>
+                </button>
               </div>
             </section>
           </section>

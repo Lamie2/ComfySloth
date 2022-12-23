@@ -3,8 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/images/logo.svg';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { logOut } from '../../store/currentUser.slice';
 
 export const NavBar = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state: RootState) => state.currentUser).userInfo;
+  const logout =()=>{
+    dispatch(logOut());
+  }
   return (
     <section id="header">
       <nav className="row">
@@ -31,10 +39,16 @@ export const NavBar = () => {
 
               </li>
               <li>
-                <Link to="/login">
-                  Login
-                  <FontAwesomeIcon icon={faUserPlus} />
-                </Link>
+              {currentUser ? currentUser.name  :
+                 <Link to="/login">
+                Login 
+                <FontAwesomeIcon icon={faUserPlus} />
+                </Link>}
+              </li>
+              <li onClick={logout}>
+                {currentUser ? "Logout"  :
+                " "
+                }
               </li>
             </ul>
           </div>
